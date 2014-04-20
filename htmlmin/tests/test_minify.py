@@ -8,6 +8,7 @@ import unittest
 
 from htmlmin.minify import html_minify
 from os.path import abspath, dirname, join
+from os import close
 
 
 def resources_path(*paths):
@@ -20,13 +21,17 @@ class TestMinify(unittest.TestCase):
         html_file = resources_path('{name}.html'.format(name=filename))
         html_file_minified = resources_path('{name}_minified.html'.format(name=filename))
 
-        html = open(html_file, mode='r').read()
-        f_minified = open(html_file_minified, mode='r').read()
+        #html = open(html_file, mode='r').read()
+        #f_minified = open(html_file_minified, mode='r').read()
+        #os.close(html)
+        #os.close(f_minified)
 
-        html.close()
-        f_minimised.close()
+        with open(html_file, 'r') as f:
+            html = f.read()
+        with open(html_file_minified, 'r') as f:
+            html_minified = f.read().strip('\n')
     
-        return html, f_minified
+        return html, html_minified
 
     def test_complete_html_should_be_minified(self):
         html, minified = self._normal_and_minified('with_menu')
@@ -81,7 +86,7 @@ class TestMinify(unittest.TestCase):
     def test_minify_function_should_return_a_unicode_object(self):
         html = "<html>   <body>some text here</body>    </html>"
         minified = html_minify(html)
-        self.assertEqual(unicode, type(minified))
+        self.assertEqual(str, type(minified))
 
     def test_minify_should_respect_encoding(self):
         html, minified = self._normal_and_minified('blogpost')
