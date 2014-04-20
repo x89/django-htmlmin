@@ -1,4 +1,4 @@
 argparse
-django==1.5.5
+django==1.6.2
 beautifulsoup4
 html5lib

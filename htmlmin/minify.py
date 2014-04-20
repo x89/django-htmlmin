@@ -8,8 +8,6 @@ import re
 
 import bs4
 
-from .util import force_decode
-
 EXCLUDE_TAGS = set(["pre", "script", "textarea"])
 # element list coming from
 # https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/HTML5_element_list
@@ -34,7 +32,6 @@ re_cond_comment_end_space = re.compile(r'\s+(<!\[endif\])',
 
 
 def html_minify(html_code, ignore_comments=True, parser="html5lib"):
-    html_code = force_decode(html_code)
     soup = bs4.BeautifulSoup(html_code, parser)
     mini_soup = space_minify(soup, ignore_comments)
     if FOLD_DOCTYPE is True:
