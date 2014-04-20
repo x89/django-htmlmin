@@ -10,8 +10,9 @@ import unittest
 from htmlmin.minify import html_minify
 from os.path import abspath, dirname, join
 
-resources_path = lambda *paths: abspath(join(dirname(__file__),
-                                             'resources', *paths))
+
+def resources_path(*paths):
+    abspath(join(dirname(__file__), 'resources', *paths))
 
 
 class TestMinify(unittest.TestCase):
