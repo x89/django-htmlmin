@@ -102,7 +102,7 @@ def space_minify(soup, ignore_comments=True):
         elif ignore_comments == True and is_comment(soup):
             # remove the element
             soup.string.replace_with('')
-    return soup
+    return soup.encode('utf-8')
 
 def is_navstr(soup):
     """test whether an element is a NavigableString or not, return a
