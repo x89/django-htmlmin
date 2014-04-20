@@ -21,4 +21,4 @@ def main():
     with open(os.path.join(my_dir, args.filename[0])) as html_file:
         content = html_file.read()
 
-    print html_minify(content, ignore_comments=not args.keep_comments)
+    print(html_minify(content, ignore_comments=not args.keep_comments))
