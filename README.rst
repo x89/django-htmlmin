@@ -1,5 +1,5 @@
 ++++++++++++++
-django-htmlmin
+django-htmlmin (for Python 3)
 ++++++++++++++
 
 .. image:: https://secure.travis-ci.org/cobrateam/django-htmlmin.png
@@ -176,13 +176,19 @@ irc channel
 Changelog
 =========
 
+0.6.3
+---
+
+* [feature] Python 3 support *only* (no Python 2.x deprecated)
+
+
 0.6.2
------
+---
 
 * [bugfix] #39 Breaks CSS and JS containing < and > signs.
 
 0.6.1
------
+---
 
 * [bugfix] Non ascii characters in exclude field fix
 
@@ -195,7 +201,7 @@ Changelog
 * [partial bugfix] don't remove all spaces around some tags
 
 0.5.1
------
+---
 
 * [bugfix] line breaks inside tags are now replaced by a single white space.
 
@@ -208,17 +214,17 @@ Changelog
   minifying using the middleware
 
 0.4.3
------
+---
 
 * skipping ``<textarea></textarea>`` content from minifying
 
 0.4.2
------
+---
 
 * [bugfix] fixed behavior for nesting html 5 tags (`issue #14 <https://github.com/cobrateam/django-htmlmin/issues/14>`_)
 
 0.4.1
------
+---
 
 * [bugfix] stopped minifying ``<pre>`` tags (thanks `Cícero Verneck Corrêa <https://github.com/cicerocomp>`_)
 
