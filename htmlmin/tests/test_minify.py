@@ -4,7 +4,6 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-import codecs
 import unittest
 
 from htmlmin.minify import html_minify
@@ -12,19 +11,22 @@ from os.path import abspath, dirname, join
 
 
 def resources_path(*paths):
-    abspath(join(dirname(__file__), 'resources', *paths))
+    return abspath(join(dirname(__file__), 'resources', *paths))
 
 
 class TestMinify(unittest.TestCase):
 
     def _normal_and_minified(self, filename):
-        html_file = resources_path('%s.html' % filename)
-        html_file_minified = resources_path('%s_minified.html' % filename)
+        html_file = resources_path('{name}.html'.format(name=filename))
+        html_file_minified = resources_path('{name}_minified.html'.format(name=filename))
 
-        html = open(html_file).read()
-        f_minified = codecs.open(html_file_minified, encoding='utf-8')
+        html = open(html_file, mode='r').read()
+        f_minified = open(html_file_minified, mode='r').read()
 
-        return html, f_minified.read().strip('\n')
+        html.close()
+        f_minimised.close()
+    
+        return html, f_minified
 
     def test_complete_html_should_be_minified(self):
         html, minified = self._normal_and_minified('with_menu')
