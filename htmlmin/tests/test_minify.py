@@ -168,3 +168,6 @@ class TestMinify(unittest.TestCase):
         )
         self.assertEqual(minified, html_minify(html))
 
+    def test_unicode_characters_not_getting_destroyed(self):
+        string = '<html><head></head><body>฿1.00 is £297.94 and €362.16 or $500.29</body></html>'
+        self.assertEqual(string, html_minify(string))

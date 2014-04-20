@@ -16,7 +16,7 @@ TEXT_FLOW = set(["a", "em", "strong", "small", "s", "cite", "q", "dfn", "abbr", 
 
 # fold the doctype element, if True then no newline is added after the
 # doctype element. If False, a newline will be insterted
-FOLD_DOCTYPE = True
+FOLD_DOCTYPE = False 
 re_multi_space = re.compile(r'\s+', re.MULTILINE|re.UNICODE)
 re_single_nl = re.compile(r'^\n$', re.MULTILINE|re.UNICODE)
 re_only_space = re.compile(r'^\s+$', re.MULTILINE|re.UNICODE)
@@ -101,7 +101,7 @@ def space_minify(soup, ignore_comments=True):
         # conditional comment and
         elif ignore_comments == True and is_comment(soup):
             # remove the element
-            soup.string.replace_with(u'')
+            soup.string.replace_with('')
     return soup
 
 def is_navstr(soup):
